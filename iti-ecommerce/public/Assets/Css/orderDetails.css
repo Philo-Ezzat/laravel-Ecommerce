@@ -1,0 +1,25 @@
+.container3 {
+    max-width: 600px;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+h1 {
+    font-size: 30px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}

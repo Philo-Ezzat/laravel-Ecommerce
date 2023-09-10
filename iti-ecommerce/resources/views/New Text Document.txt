@@ -1,0 +1,20 @@
+orders -orderid P/userid F/Cost
+orders details -OrderID F / Product id F / Quantity 
+product Id P/ Price/Quantity/image/Description
+user   ID P/ Name/ Email /Password /Role /Status/A_code
+cart  User_id F/ Product_Id F/ Quantity
+
+
+
+
+
+user having id / name / email / password / role /status /activationCode
+cart having userid foreign key / product id foreign key / quantity
+product having id / name / price / quantity / image / description
+orders having id / userid foreign key / cost 
+orderDetails having orderid foreign key/ productid foreign key / quantity
+
+
+
+
+{{ route('profile.update') }}
