@@ -11,7 +11,7 @@ class OrdersFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 10), // Assuming you have 10 users
+            'user_id' => $this->faker->numberBetween(1, 10), 
             'cost' => $this->faker->randomFloat(2, 50, 500),
         ];
     }

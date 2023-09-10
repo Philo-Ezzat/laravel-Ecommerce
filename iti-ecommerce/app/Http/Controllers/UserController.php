@@ -104,7 +104,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $userid = session('user_id');
-        $user = User::where('id', $userid)->first(); // Use 'first()' to get a single user
+        $user = User::where('id', $userid)->first(); 
     
         $request->validate([
             'name' => 'required|string|max:255',

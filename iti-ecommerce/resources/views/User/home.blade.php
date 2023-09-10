@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Assets/Css/home.css') }}">
+    <link rel="icon" href="{{ asset('Images/favicon.ico') }}" type="image/x-icon">
+
     <title>Home</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
             @endif
 
             <div class="card">
-                <img src="../Images/{{ $product->image }}" alt="img" style="width: 200px; height: 200px;">
+                <img src="../Images/{{ $product->image }}" alt="img" style="width: 200px; height: 200px; border-radius: 8px;">
                 <h2>{{ $product->name }}</h2>
                 <p class="price">{{ $product->price }}.LE</p>
 

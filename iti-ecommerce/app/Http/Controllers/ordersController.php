@@ -16,7 +16,6 @@ class OrdersController extends Controller
         
             $cartItems = Cart::where('user_id', $user_id)->get();
         
-            // Check if there are items in the cart
             if ($cartItems->isEmpty()) {
                 return '<script>alert("Cart Empty."); window.location.href = "'.route('cart.show').'";</script>';            }
         
@@ -25,7 +24,6 @@ class OrdersController extends Controller
         
                 $totalCost = $request->input('cost');
         
-                // Check if there is enough quantity for each product in the cart
                 foreach ($cartItems as $cartItem) {
                     $product = Product::find($cartItem->product_id);
         

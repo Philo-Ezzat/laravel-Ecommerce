@@ -64,9 +64,3 @@ Route::post('/order', [OrdersController::class, 'store'])->name('submitOrder');
 
 Route::get('/order/{id}/details', [OrderDetailsController::class, 'show'])->name('details.show');
 
-
-Route::put('/edit-product/{id}', 'ProductController@update');
-Route::post('/add-product', 'ProductController@store');
-Route::delete('/delete-product/{id}', 'ProductController@destroy');
-
-

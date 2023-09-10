@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Assets/Css/orderDetails.css') }}">
+    <link rel="icon" href="{{ asset('Images/favicon.ico') }}" type="image/x-icon">
+
     <title>Details</title>
 </head>
 <body>

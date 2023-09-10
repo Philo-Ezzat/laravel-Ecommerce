@@ -10,13 +10,11 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Your page content goes here -->
 
         <footer>
             <div class="footer">
                 <div class="footer-content">
                     <div class="social-icons">
-                        <!-- Use Font Awesome icon classes -->
                         <a href="#"><i class="fab fa-facebook" style="color:black;"></i></a>
                         <a href="#"><i class="fab fa-twitter" style="color:black;"></i></a>
                         <a href="#"><i class="fab fa-instagram" style="color:black;"></i></a>

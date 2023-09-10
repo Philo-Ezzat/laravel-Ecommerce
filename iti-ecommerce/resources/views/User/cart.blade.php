@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Shopping Cart</title>
     <link rel="stylesheet" href="{{ asset('Assets/Css/cart.css') }}">
+    <link rel="icon" href="{{ asset('Images/favicon.ico') }}" type="image/x-icon">
+    <title>Shopping Cart</title>
 
 </head>
 <body>
@@ -43,7 +44,7 @@
                 @endphp
                 <tr>
                     <td>{{ $cartItem->product->name }}</td>
-                    <td><img src="../Images/{{ $cartItem->product->image }}" alt="Product 1" width="100px" ></td>
+                    <td><img src="../Images/{{ $cartItem->product->image }}" alt="Product 1" width="100px" style="border-radius: 8px;" ></td>
                     <td>${{ $cartItem->product->price }}</td>
                     <td>
                         <select name="quantity" class="quantity-select" data-cart-item-id="{{ $cartItem->id }}">
