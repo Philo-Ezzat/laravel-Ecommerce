@@ -22,7 +22,7 @@
                 <label for="username">Email:</label>
                 <input type="email" id="email" name="email" required>
                 @if(session('error'))
-                <div class="alert alert-danger" style="color:red;">
+                <div class="alert alert-danger" style="color:red; margin-top:5px;">
                  {{ session('error') }}
                     </div>
                 @endif

@@ -40,6 +40,17 @@ class ProductController extends Controller
         return view('User/home', ['products' => $products, 'cartItems' => $cartItems]);
     }
 
+    public function showForAdmin($id) {
+        $product = Product::find($id);
+    
+        if (!$product) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+    
+        return response()->json(['products' => [$product]]);
+    }
+    
+    
     public function search(Request $request)
     {
         $userId = auth()->id(); 
@@ -55,12 +66,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'productName' => 'required|string',
+            'productName' => 'nullable|string',
             'productPrice' => 'required|numeric',
             'productImage' => 'image|mimes:jpeg,png,jpg,gif',
             'productQuantity' => 'required|numeric',
         ]);
-
+        if($request->filled('productName')){
         if ($request->hasFile('productImage')) {
             $image = $request->file('productImage');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -72,10 +83,14 @@ class ProductController extends Controller
             $product->image =  $imageName; 
             $product->quantity = $request->input('productQuantity');
             $product->save();
+            Session::put('error', '');
             return redirect()->route('admin');
         } else {
-
-            Session::put('error', 'please choose an image.');
+            Session::put('error', 'Please Choose an image.');
+            return redirect()->route('admin');
+        }}
+        else{
+            Session::put('error', 'Please Enter the Name.');
             return redirect()->route('admin');
         }
 
@@ -84,32 +99,28 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         try {
-            $request->validate([
-                'productImage' => 'image|mimes:jpeg,png,jpg,gif',
-
-
-            ]);
-    
-            $id = $request->input('selectedItemId');
+            $id = $request->input('selectedItemId2');
             $product = Product::find($id);
-            if(!$product){
-                return redirect()->route('admin')->with('error', 'no product choosed.');
 
-            }
             if (!$product) {
-                return redirect()->route('admin')->with('error', 'Product not found.');
+                Session::put('error3', 'Product not found.');
+                return redirect()->route('admin');
             }
-    
+            
+
             if ($request->filled('productPrice')) {
                 $product->price = $request->input('productPrice');
             }
+
             else{
                 $product->price =  $product->price;
             }
-    
+
             if ($request->filled('productQuantity')) {
                 $product->quantity = $request->input('productQuantity');
             }
+
+
             else{
                 $product->quantity = $product->quantity;
             }
@@ -149,7 +160,7 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
-        $id = $request->input('selectedItemId');
+        $id = $request->input('selectedItemId1');
         
         $product = Product::find($id);
         if($product){

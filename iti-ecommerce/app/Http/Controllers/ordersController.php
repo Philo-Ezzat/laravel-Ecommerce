@@ -57,8 +57,8 @@ class OrdersController extends Controller
         
                 DB::commit();
         
-                return redirect()->route('home')->with('success', 'Order submitted successfully');
-            } catch (\Exception $e) {
+                return '<script>alert("Thanks For Ordering From EasyBuy "); window.location.href = "'.route('home').'";</script>';            }
+                 catch (\Exception $e) {
                 DB::rollback();
                 return redirect()->route('cart.show')->with('error', 'There was an error submitting the order');
             }

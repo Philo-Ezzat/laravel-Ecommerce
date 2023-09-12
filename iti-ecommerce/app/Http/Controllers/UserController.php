@@ -27,6 +27,7 @@ class UserController extends Controller
             Session::put('user_id', $user->id); 
             Session::put('user_name', $user->name); 
             Session::put('role', $user->role); 
+            Session::put('error', '');
             if($user->role == "user"){
             return redirect()->route('home');
         }
@@ -34,7 +35,9 @@ class UserController extends Controller
             return redirect()->route('admin');
         }
         } else {
-            return redirect()->route('login')->with('error', 'Invalid Email Or Password');
+            Session::put('error', 'Invalid Email Or Password'); 
+
+            return redirect()->route('login');
         }
     }
 
@@ -68,6 +71,7 @@ class UserController extends Controller
                 Session::put('role', $user->role); 
                 Session::put('user_id', $user->id);
                 Session::put('user_name', $user->name);
+                Session::put('error', '');
                 return redirect()->route('home')->with('success', 'Registration Successful');
         }
             else{
@@ -107,7 +111,7 @@ class UserController extends Controller
         $user = User::where('id', $userid)->first(); 
     
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => ' nullable|string|max:255',
             'email' => 'required|string|max:255',
             'password' => 'nullable|string',
             'old_password' => 'nullable|string',
@@ -118,10 +122,20 @@ class UserController extends Controller
             return redirect()->route('profile.show', ['id' => $userid]);
         }
     
-        $data = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-        ];
+        
+            if($request->filled('name')){
+                $data = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+            ];
+            }
+            else{
+                $data = [
+                    'email' => $request->input('email'),
+                ];
+            }
+
+        
     
         if ($request->filled('password')) {
             if(strlen($request['password'])>=8){
