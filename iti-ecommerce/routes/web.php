@@ -38,8 +38,8 @@ Route::get('/login', function () {
 
 
 Route::get('/DashBoard', [ProductController::class, 'index'])->name('admin');
-Route::get('/', [ProductController::class, 'getProducts'])->name('home');
 Route::get('/DashBoard/{id}', [ProductController::class, 'showForAdmin'])->name('admin.info');
+Route::get('/', [ProductController::class, 'getProducts'])->name('home');
 Route::post('/', [ProductController::class, 'search'])->name('search');
 
 Route::delete('DashBoard/delete-product', [ProductController::class, 'destroy'])->name('product.delete');

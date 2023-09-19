@@ -62,7 +62,7 @@ class UserController extends Controller
             if(strlen($request['password'])>=8){
             if($request['password']==$request['password_confirmation']){
                 $user = new User();
-                $user->name = $request->input('name');
+                $user->name = $request->input('name');  
                 $user->email = $request->input('email');
                 $user->role = "user";
                 $user->password = bcrypt($request->input('password')); 
